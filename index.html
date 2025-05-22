@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ويب إيفكت | WebEffect</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      font-family: 'Montserrat', sans-serif;
+      background: #000014;
+      color: #00e0ff;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background:
+        radial-gradient(circle at 25% 25%, #00e0ff33, transparent 30%),
+        radial-gradient(circle at 75% 75%, #0088ff33, transparent 30%);
+      animation: pulse 10s infinite alternate ease-in-out;
+      z-index: -2;
+      filter: blur(80px);
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      color: #00e0ff;
+      text-shadow: 0 0 20px #00e0ff;
+    }
+
+    header span {
+      display: block;
+      font-size: 1.3rem;
+      color: #a0f7ff;
+      margin-top: 10px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+      background: rgba(0, 224, 255, 0.05);
+      border-radius: 20px;
+      box-shadow: 0 0 30px #00e0ff55;
+      backdrop-filter: blur(5px);
+    }
+
+    h2 {
+      color: #00e0ff;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      text-align: center;
+      color: #c0f7ff;
+    }
+
+    .services {
+      margin-top: 30px;
+    }
+
+    .service-item {
+      background: rgba(0, 224, 255, 0.1);
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #00e0ff33;
+    }
+
+    .service-item h3 {
+      color: #00e0ff;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 20px 10px 0;
+      padding: 15px 30px;
+      background: #00e0ff;
+      color: #001c2c;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 15px #00e0ff;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #007bb8;
+      color: #fff;
+    }
+
+    #contact-info {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.3rem;
+      color: #00e0ff;
+    }
+
+    #copy-btn {
+      margin-top: 10px;
+      padding: 8px 20px;
+      background: #00e0ff;
+      color: #001c2c;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 0 20px #00e0ff44;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #007bb8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    ويب إيفكت
+    <span>WebEffect</span>
+  </header>
+
+  <main>
+    <h2>أهلاً بك في عالمي</h2>
+    <p>أنا أُصمم وأُطور مواقع إلكترونية احترافية بجودة عالية للمؤسسات والأفراد</p>
+
+    <div class="services">
+      <div class="service-item">
+        <h3>تصميم مواقع</h3>
+        <p>واجهات عصرية، سريعة، ومتجاوبة لجميع الأجهزة</p>
+      </div>
+      <div class="service-item">
+        <h3>تطوير حسب الطلب</h3>
+        <p>بناء أنظمة حسب متطلباتك باستخدام أحدث التقنيات</p>
+      </div>
+    </div>
+
+    <!-- صور -->
+    <img src="https://via.placeholder.com/800x400.png?text=مثال+على+موقع" alt="مثال موقع" />
+
+    <!-- أزرار التواصل -->
+    <div style="text-align:center;">
+      <button class="btn" onclick="showContact()">تواصل معي</button>
+      <a class="btn" href="https://wa.me/9647501863145" target="_blank">راسلني واتساب</a>
+    </div>
+
+    <!-- معلومات التواصل -->
+    <div id="contact-info">
+      <div>رقمي: <span id="phone-number">+964 7501863145</span></div>
+      <button id="copy-btn" onclick="copyNumber()">نسخ الرقم</button>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 WebEffect - جميع الحقوق محفوظة
+  </footer>
+
+  <script>
+    function showContact() {
+      document.getElementById('contact-info').style.display = 'block';
+    }
+
+    function copyNumber() {
+      const number = document.getElementById("phone-number").textContent;
+      navigator.clipboard.writeText(number).then(() => {
+        alert("تم نسخ الرقم!");
+      });
+    }
+  </script>
+
+</body>
+</html>
